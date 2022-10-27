@@ -1,0 +1,838 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
+    <title>Basit Mağaza</title>
+
+
+    <style>
+        .hline { 
+            width:auto; 
+            height:3px; 
+            background: gray; 
+            margin-left: auto; 
+        }       
+
+        ::-webkit-scrollbar{
+        width: 10px;
+       }
+        ::-webkit-scrollbar-track {
+            box-shadow: inset 0 0 5px grey; 
+            border-radius: 10px;
+        }
+
+        ::-webkit-scrollbar-thumb {
+            background: red; 
+            border-radius: 10px;
+        }
+
+      
+        ::-webkit-scrollbar-thumb:hover {
+        background: #555; 
+        transition-duration: 0.4s;
+        }
+        
+        td > img{
+        height: 100px;
+        width: auto;
+       }
+       table{
+        text-align: center;
+            vertical-align: middle;
+            justify-content: center;
+       }
+       td{
+            text-align: center;
+            vertical-align: middle;
+            justify-content: center;
+
+       }
+        td > button{
+        display: inline-block;
+        background-color: wheat;
+        font: bold 10px tahoma;
+        text-align: center;
+        text-decoration: none;
+        vertical-align: middle;
+        cursor: pointer;
+        padding: 0.375rem 0.9rem;
+        font-size: 1rem;
+        border: 0px solid white;
+        border-radius: 0.25rem;
+        justify-content: center;
+        }
+       
+        #indexNbm{
+           
+            text-align: center;
+            vertical-align: middle;
+            justify-content: center;
+        }
+        /* document.getElementById("itemContainer").style.backgroundColor = "orange";
+                    document.getElementById("itemContainer").style.width = "24px";
+                    document.getElementById("itemContainer").style.height = "24px";
+                    document.getElementById("itemContainer").style.borderRadius = "12px"; */
+
+        #itemContainer{
+            width: 12px;
+            height: 12px;
+            border-radius: 6px;
+            background-color: orange;
+            visibility: hidden;
+            margin-left: 80%;
+            margin-top: 5px;
+            
+        }
+
+
+        </style>
+
+  
+</head>
+<body>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
+    <header class="d-flex justify-content-center align-items-between flex-wrap py-3 mb-4 border-botttom col-12">
+
+        <h1 class="text-center display-3 mt-4 col-10 gap-2 mx-2">Alışveriş Uygulaması</h1>
+
+        <div class="shoppingCardContainer">
+            <div id="itemContainer" class="text-center justify-content-center">
+                <label id="itemCount" class="label fs-6 text-mtued"></label>
+            </div>
+            <a id="sepetBtn" onclick="shpCart()" class="btn d-flex justify-content-center">
+                <svg xmlns="http://www.w3.org/2000/svg" width="50" height="50" fill="currentColor" class="bi bi-cart2  mb-2" viewBox="0 0 16 16">
+                    <path d="M0 2.5A.5.5 0 0 1 .5 2H2a.5.5 0 0 1 .485.379L2.89 4H14.5a.5.5 0 0 1 .485.621l-1.5 6A.5.5 0 0 1 13 11H4a.5.5 0 0 1-.485-.379L1.61 3H.5a.5.5 0 0 1-.5-.5zM3.14 5l1.25 5h8.22l1.25-5H3.14zM5 13a1 1 0 1 0 0 2 1 1 0 0 0 0-2zm-2 1a2 2 0 1 1 4 0 2 2 0 0 1-4 0zm9-1a1 1 0 1 0 0 2 1 1 0 0 0 0-2zm-2 1a2 2 0 1 1 4 0 2 2 0 0 1-4 0z"/>
+                  </svg>
+                </a>
+        </div>
+       
+       
+    </header>
+     <div class="hline"></div>
+
+
+                <div id="pc1" class="row justify-content-start gap-5 mt-5 align-items-between">
+                    
+                        <div class="card mt-4" style="width: 25rem; border: none; z-index: 1;">
+                            <div id="ch" class="card-header text-center text-mtued"><h3  class="text-muted">Apple Mac Air M1</h3></div>
+                            <img id="img1" src="img/apple.jpg" alt="" class="card-img-top mt-4 mb-4">
+                            <div class="card-body text-center">
+                                <h5 class="card-title" id="card1_fiyat">73.989 ₺</h5>
+                                <a href="#" id="btn1" onclick="artirFnk()" class="btn btn-dark mt-3">Sepete ekle</a>
+                                <h6 class="card-subtitle mb-3 mt-3 text-muted">8 çekirdekli CPU’ya, 7 çekirdekli GPU’ya, 16 çekirdekli Neural Engine’a sahip Apple M1 çip</h6>
+                            </div>
+                        </div>
+
+                        <div class="card mt-4" style="width: 25rem; border: none; z-index: 1;">
+                            <div class="card-header text-center text-mtued"><h3 class="text-muted">Huawei Matebook D15</h3></div>
+                            <img src="img/huawei.jpg" alt="" class="card-img-top mt-4 mb-4">
+                            <div class="card-body text-center">
+                                    <h5 class="card-title" id="card2_fiyat">21.799 ₺</h5>
+                                    <a href="#" onclick="artirFnk2()" class="btn btn-primary mt-3">Sepete ekle</a>
+                                    <h6 class="card-subtitle mb-3 mt-3 text-muted">Huawei Matebook D15 Intel Core i7 1165G7 16GB 512GB SSD Windows 11 Home 15.6" Taşınabilir Bilgisayar</h6>
+                                </div>
+                            </div>
+                        
+                        <div class="card mt-4" style="width: 25rem; border: none; z-index: 1;">
+                            <div class="card-header text-center text-mtued"><h3 class="text-muted">Iphone XR</h3></div>
+                            <img src="img/iphone.jpg" alt="" class="card-img-top mt-4 mb-4">
+                            <div class="card-body text-center">
+                                <h5 class="card-title" id="card3_fiyat">12.499 ₺</h5>
+                                <a href="#" onclick="artirFnk3()" class="btn btn-primary mt-3">Sepete ekle</a>
+                                <h6 class="card-subtitle mb-3 mt-3 text-muted">Iphone XR'ın 6.1 inç ekranı, ekranın tüm köşelere uzanmasını sağlayan arka aydınlatma tasarımına sahip.</h6>
+                            </div>
+                        </div>
+                    
+                        <div class="card mt-4" style="width: 25rem; border: none; z-index: 1;">
+
+                            <div class="card-header text-center text-mtued"><h3 class="text-muted">Xiaomi Mi Mix</h3></div>
+                            <img src="img/xiaomi.jpg" alt="" class="card-img-top mt-4 mb-4">
+                            <div class="card-body text-center">
+                                <h5 class="card-title" id="card4_fiyat">10.299 ₺</h5>
+                                <a href="#" onclick="artirFnk4()" class="btn btn-primary mt-3">Sepete ekle</a>
+                                <h6 class="card-subtitle mb-3 mt-3 text-muted">Xiaomi Mi Mix 256 GB Dual Sim Siyah Cep Telefonu İthalatçı Garantili</h6>
+                            </div>
+                        </div>
+                       
+                    <div id="cartContainer" class="" style="width:25%; visibility:hidden;">
+                           
+                            <div class="table" style="position: relative; visibility: hidden;">
+                            <table id="table" class="table gap-2 " style="height: auto;">
+                                <thead>
+                                    <th scope="col" style="width: 25%;">
+                                        <div class="d-flex flex-wrap justify-content-center" >
+                                            <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" fill="currentColor" class="bi bi-card-image" viewBox="0 0 16 16">
+                                                <path d="M6.002 5.5a1.5 1.5 0 1 1-3 0 1.5 1.5 0 0 1 3 0z"/>
+                                                <path d="M1.5 2A1.5 1.5 0 0 0 0 3.5v9A1.5 1.5 0 0 0 1.5 14h13a1.5 1.5 0 0 0 1.5-1.5v-9A1.5 1.5 0 0 0 14.5 2h-13zm13 1a.5.5 0 0 1 .5.5v6l-3.775-1.947a.5.5 0 0 0-.577.093l-3.71 3.71-2.66-1.772a.5.5 0 0 0-.63.062L1.002 12v.54A.505.505 0 0 1 1 12.5v-9a.5.5 0 0 1 .5-.5h13z"/>
+                                            </svg>
+                                        </th>
+                                        
+                                    <th scope="col">Ürün adı</th>
+                                    <th scope="col">Adet</th>
+                                    <th scope="col">Fiyat</th>
+                                </thead>
+                                <tbody id="mtryl" class="">
+
+                                </tbody>
+                            </table>
+
+                            <div id="hesaplamaBtn" onclick="faturFnk()" class="btn btn-primary" style="visibility: hidden;">Hesapla</div>
+
+                        <div id="checkAccount" class="card d-flex flex-wrap" style="width: auto; height:20%; position: relative; visibility: hidden;">
+                                <div class="card-header" style="height:40px;">
+                                  <p class="text-center text-muted">Ödenecek Toplam Tutar ₺</p>
+                                </div>
+                                <div class="card-body">
+                                  <blockquote class="blockquote mb-0">
+                                    <p id="hesap" class="text-center"></p>
+                                    <footer class="blockquote-footer"><cite title="Source Title">Bizi tercih ettiğiniz için teşekkür ederiz...</cite></footer>
+                                  </blockquote>
+                                </div>
+                            </div>                                
+                        </div>
+                    </div>
+            </div> 
+                
+          
+         
+            <script>
+            
+              
+            var controlNumber = 0,controlNumber2 = 0,controlNumber3 = 0,controlNumber4 = 0;
+            var str1_fiyat=0,str2_fiyat=0,str3_fiyat=0,str4_fiyat=0;
+
+            function artirFnk()
+            {
+                    
+                    
+                          
+                    if(controlNumber==0){
+                        controlNumber++;
+                        var itemCount_adet=0;
+                      
+                        itemCount_adet++;
+
+                    document.getElementById('itemContainer').style.visibility = 'visible';
+                    const tr = document.createElement('tr');
+                    tr.id='tr_1';
+                    document.getElementById('mtryl').append(tr); 
+                    
+                    
+               
+                    for (var i = 0; i<4; i++){
+                    var td = document.createElement('td');
+                    document.getElementById('mtryl').append(td);
+
+                    if(i==0){
+                    
+                            var img = document.createElement('img');
+                            img.src = "img/apple.jpg";
+                            var src = document.getElementById('mtryl');
+                            td.appendChild(img);
+
+                    }else if(i==1){
+
+                            const baslik = document.createElement('p');
+                            const not = document.createTextNode('Apple Mac Air M1');
+                            baslik.appendChild(not);
+                            td.appendChild(baslik);
+
+
+                    }else if(i==2){
+                            var total=0,total2=0;
+                            var fiyat = [73989,147978]; 
+                                total = fiyat[0]; 
+
+                            const button1 = document.createElement('button');   
+                            button1.type = 'button';                     
+                             button1.id = 'myBtn1';
+                            td.appendChild(button1);
+                            document.getElementById('myBtn1').innerHTML = '+';
+                           
+
+                          
+
+                            const button2 = document.createElement('button');
+                            button2.id = 'myBtn2';
+                            button2.type = 'button'; 
+                            td.appendChild(button2);
+                            document.getElementById('myBtn2').innerHTML = '-';
+                            document.getElementById('myBtn2').style.marginLeft = '20px';
+                            document.getElementById('myBtn2').style.paddingLeft = '20px';
+
+
+                            
+                            var p = document.createElement('p');
+                            p.id = 'indexNmb';
+                            var node = document.createTextNode(itemCount_adet);                            
+                            p.appendChild(node);
+                            td.appendChild(p);
+                            
+
+
+
+
+                            // BUTONLAR
+
+                            document.getElementById("myBtn1").addEventListener("click", function() {
+                             
+                               
+                                itemCount_adet++;
+
+                                document.getElementById('indexNmb').innerHTML = itemCount_adet.toString();   
+                                
+
+                            
+
+                                let totalEnd =new Intl.NumberFormat('en-US');    
+                                                 
+                                total = total + fiyat[0];                               
+
+                                totalEnd = totalEnd.format(total);
+                                str1_fiyat = totalEnd;
+                                document.getElementById('fiyat').innerHTML = str1_fiyat.toString()+' ₺';
+                                console.log(str1_fiyat);
+                            }); 
+
+                            document.getElementById("myBtn2").addEventListener("click", function() {
+                                total2=total;
+                                itemCount_adet--;
+                                let totalEnd2 =new Intl.NumberFormat('en-US');   
+                                total2 = total2 - 73989;
+
+                                totalEnd2 = totalEnd2.format(total2);
+                                document.getElementById('fiyat').innerHTML = totalEnd2.toString()+' ₺';
+
+                               
+                                document.getElementById('indexNmb').innerHTML = itemCount_adet.toString();
+
+                                total=total2;
+                                str1_fiyat = total2;
+                                console.log(str1_fiyat);
+                                
+                                if(total2==0){
+                                    tr.remove(document.getElementById('#tr_1'));
+                                    controlNumber=0;
+                                }
+                             
+                            });  
+                           
+
+                    }else if(i==3){                            
+                            var prg = document.createElement('p');                       
+                            prg.id='fiyat';
+                            var note = document.createTextNode('73.989 ₺');   
+                            prg.appendChild(note);                            
+                            td.appendChild(prg); 
+                            str1_fiyat = 73989;
+                            document.getElementById('fiyat').innerHTML = document.getElementById('card1_fiyat').innerHTML;
+                            
+
+                    }
+
+                   
+
+                     tr.appendChild(td);
+                     controlNumber++;
+                     
+                    }
+                    
+
+                 
+            }
+            
+        }
+ 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        function artirFnk2()
+            {
+                                       
+                    if(controlNumber2==0){
+                        controlNumber2++;
+                        var    itemCount_adet_2=0;
+                      
+                        itemCount_adet_2++;
+
+
+                    document.getElementById('itemContainer').style.visibility = 'visible';
+                    var tr = document.createElement('tr');
+                    tr.id='tr_2';
+                    document.getElementById('mtryl').append(tr); 
+                    
+               
+                    for (var i = 0; i<4; i++){
+                    var td = document.createElement('td');
+                    document.getElementById('mtryl').append(td);
+
+                    if(i==0){
+                    
+                            var img = document.createElement('img');
+                            img.src = "img/huawei.jpg";
+                            var src = document.getElementById('mtryl');
+                            td.appendChild(img);
+
+                    }else if(i==1){
+
+                            const baslik = document.createElement('p');
+                            const not = document.createTextNode('Huawei Matebook D15');
+                            baslik.appendChild(not);
+                            td.appendChild(baslik);
+
+
+                    }else if(i==2){
+                            var total_2=0,total2_2=0;
+                            var fiyat_2 = [21799,43598]; 
+                               
+                                total_2 = fiyat_2[0];  
+
+                            const button1_2 = document.createElement('button');   
+                            button1_2.type = 'button';                     
+                             button1_2.id = 'myBtn1_2';
+                            td.appendChild(button1_2);
+                            document.getElementById('myBtn1_2').innerHTML = '+';
+                           
+
+                          
+
+                            const button2_2 = document.createElement('button');
+                            button2_2.type = 'button'; 
+                            button2_2.id = 'myBtn2_2';
+                            td.appendChild(button2_2);
+                            document.getElementById('myBtn2_2').innerHTML = '-';
+                            document.getElementById('myBtn2_2').style.marginLeft = '20px';
+                            document.getElementById('myBtn2_2').style.paddingLeft = '20px';
+
+
+                            
+                            var p_2 = document.createElement('p');
+                            p_2.id = 'indexNmb_2';
+                            var node = document.createTextNode(itemCount_adet_2);                            
+                            p_2.appendChild(node);
+                            td.appendChild(p_2);
+                            
+
+
+
+
+                            // BUTONLAR
+
+                            document.getElementById("myBtn1_2").addEventListener("click", function() {
+                             
+                                // adet 
+
+                                itemCount_adet_2++;
+                                document.getElementById('indexNmb_2').innerHTML = itemCount_adet_2.toString();     
+                                
+
+                                // index totalleme
+
+                                let totalEnd =new Intl.NumberFormat('en-US');    
+                                                 
+                                total_2 = total_2 + fiyat_2[0];                               
+
+                                totalEnd = totalEnd.format(total_2);
+                                str2_fiyat = totalEnd;
+                                document.getElementById('fiyat_2').innerHTML = str2_fiyat.toString()+' ₺';
+                                console.log(str2_fiyat);
+                            }); 
+
+                            document.getElementById("myBtn2_2").addEventListener("click", function() {
+                                total2_2=total_2;
+                                itemCount_adet_2--;
+                                let totalEnd2 =new Intl.NumberFormat('en-US');   
+                                total2_2 = total2_2 - 21799;
+
+                                totalEnd2 = totalEnd2.format(total2_2);
+                                document.getElementById('fiyat_2').innerHTML = totalEnd2.toString()+' ₺';
+
+                                document.getElementById('indexNmb_2').innerHTML = itemCount_adet_2.toString(); 
+
+                                total_2=total2_2;
+                                str2_fiyat = total2_2;
+                                console.log(str2_fiyat);
+
+                                if(total2_2==0){
+                                   tr.remove(document.getElementById('tr_2'));
+                                    
+                                    
+                                    controlNumber2=0;
+                                }
+                                
+                            });  
+                           
+
+                    }else if(i==3){                            
+                            var prg = document.createElement('p');                       
+                            prg.id='fiyat_2';
+                            var note = document.createTextNode('21.799 ₺');   
+                            prg.appendChild(note);                            
+                            td.appendChild(prg); 
+                            str2_fiyat = 21799;
+                            document.getElementById('fiyat_2').innerHTML = document.getElementById('card2_fiyat').innerHTML;
+                            
+
+                    }
+
+                   
+
+                     tr.appendChild(td);
+                     controlNumber2++;
+                    }
+                    
+
+                 
+            }
+            
+        }
+       
+        function artirFnk3()
+            {
+                    
+                          
+                    if(controlNumber3==0){
+                        controlNumber3++;
+                        var itemCount_adet_3=0;
+                        
+                        itemCount_adet_3++;
+
+                    document.getElementById('itemContainer').style.visibility = 'visible';
+                    const tr = document.createElement('tr');
+                    tr.id='tr_3';
+                    document.getElementById('mtryl').append(tr); 
+                    
+                    
+               
+                    for (var i = 0; i<4; i++){
+                    var td = document.createElement('td');
+                    document.getElementById('mtryl').append(td);
+
+                    if(i==0){
+                    
+                            var img = document.createElement('img');
+                            img.src = "img/iphone.jpg";
+                            var src = document.getElementById('mtryl');
+                            td.appendChild(img);
+
+                    }else if(i==1){
+
+                            const baslik = document.createElement('p');
+                            const not = document.createTextNode('Iphone XR');
+                            baslik.appendChild(not);
+                            td.appendChild(baslik);
+
+
+                    }else if(i==2){
+                            var total_3=0,total2_3=0;
+                            var fiyat_3 = [12499,25998]; 
+                                total_3 = fiyat_3[0];
+                                   
+                               
+
+                            const button1_3 = document.createElement('button');   
+                            button1_3.type = 'button';                     
+                             button1_3.id = 'myBtn1_3';
+                            td.appendChild(button1_3);
+                            document.getElementById('myBtn1_3').innerHTML = '+';
+                           
+
+                          
+
+                            const button2_3 = document.createElement('button');
+                            button2_3.id = 'myBtn2_3';
+                            button2_3.type = 'button_3'; 
+                            td.appendChild(button2_3);
+                            document.getElementById('myBtn2_3').innerHTML = '-';
+                            document.getElementById('myBtn2_3').style.marginLeft = '20px';
+                            document.getElementById('myBtn2_3').style.paddingLeft = '20px';
+
+
+                            
+                            var p_3 = document.createElement('p');
+                            p_3.id = 'indexNmb_3';
+                            var node = document.createTextNode(itemCount_adet_3);                            
+                            p_3.appendChild(node);
+                            td.appendChild(p_3);
+                            
+
+
+
+
+                            // BUTONLAR
+
+                            document.getElementById("myBtn1_3").addEventListener("click", function() {
+                             
+                               
+                                itemCount_adet_3++;
+
+                                document.getElementById('indexNmb_3').innerHTML = itemCount_adet_3.toString();   
+                                
+
+                            
+
+                                let totalEnd =new Intl.NumberFormat('en-US');    
+                                                 
+                                total_3 = total_3 + fiyat_3[0];                               
+
+                                totalEnd = totalEnd.format(total_3);
+                                str3_fiyat = totalEnd;
+                                document.getElementById('fiyat_3').innerHTML = str3_fiyat.toString()+' ₺';
+                                console.log(str3_fiyat);
+                            }); 
+
+                            document.getElementById("myBtn2_3").addEventListener("click", function() {
+                                total2_3=total_3;
+                                itemCount_adet_3--;
+                                let totalEnd2 =new Intl.NumberFormat('en-US');   
+                                total2_3 = total2_3 - 12499;
+
+                                totalEnd2 = totalEnd2.format(total2_3);
+                                document.getElementById('fiyat_3').innerHTML = totalEnd2.toString()+' ₺';
+
+                               
+                                document.getElementById('indexNmb_3').innerHTML = itemCount_adet_3.toString();
+
+                                total_3=total2_3;
+                                str3_fiyat = total2_3;
+                                console.log(str3_fiyat);
+                                
+                                if(itemCount_adet_3==0){
+                                    tr.remove(document.getElementById('#tr_3'));
+                                    controlNumber3=0;
+                                }
+                             
+                            });  
+                           
+
+                    }else if(i==3){                            
+                            var prg = document.createElement('p');                       
+                            prg.id='fiyat_3';
+                            var note = document.createTextNode('12.499 ₺');   
+                            prg.appendChild(note);                            
+                            td.appendChild(prg); 
+                            str3_fiyat = 12499;
+                            document.getElementById('fiyat_3').innerHTML = document.getElementById('card3_fiyat').innerHTML;
+                            
+
+                    }
+
+                   
+                
+                     tr.appendChild(td);
+                     controlNumber3++;
+                     
+                    }
+                    
+
+                 
+            }
+            
+        }
+        
+
+        
+        function artirFnk4()
+            {
+                    
+                          
+                    if(controlNumber4==0){
+                        controlNumber4++;
+                        var itemCount_adet_4=0;
+                        
+                        itemCount_adet_4++;
+
+                    document.getElementById('itemContainer').style.visibility = 'visible';
+                    const tr = document.createElement('tr');
+                    tr.id='tr_4';
+                    document.getElementById('mtryl').append(tr); 
+                    
+                    
+               
+                    for (var i = 0; i<4; i++){
+                    var td = document.createElement('td');
+                    document.getElementById('mtryl').append(td);
+
+                    if(i==0){
+                    
+                            var img = document.createElement('img');
+                            img.src = "img/xiaomi.jpg";
+                            var src = document.getElementById('mtryl');
+                            td.appendChild(img);
+
+                    }else if(i==1){
+
+                            const baslik = document.createElement('p');
+                            const not = document.createTextNode('Xiaomi Mi Mix');
+                            baslik.appendChild(not);
+                            td.appendChild(baslik);
+
+
+                    }else if(i==2){
+                            var total_4=0,total2_4=0;
+                            var fiyat_4 = [10299,20598]; 
+                                total_4 = fiyat_4[0];
+                                   
+                               
+
+                            const button1_4 = document.createElement('button');   
+                            button1_4.type = 'button';                     
+                             button1_4.id = 'myBtn1_4';
+                            td.appendChild(button1_4);
+                            document.getElementById('myBtn1_4').innerHTML = '+';
+                           
+
+                          
+
+                            const button2_4 = document.createElement('button');
+                            button2_4.id = 'myBtn2_4';
+                            button2_4.type = 'button_4'; 
+                            td.appendChild(button2_4);
+                            document.getElementById('myBtn2_4').innerHTML = '-';
+                            document.getElementById('myBtn2_4').style.marginLeft = '20px';
+                            document.getElementById('myBtn2_4').style.paddingLeft = '20px';
+
+
+                            
+                            var p_4 = document.createElement('p');
+                            p_4.id = 'indexNmb_4';
+                            var node = document.createTextNode(itemCount_adet_4);                            
+                            p_4.appendChild(node);
+                            td.appendChild(p_4);
+                            
+
+
+
+
+                            // BUTONLAR
+
+                            document.getElementById("myBtn1_4").addEventListener("click", function() {
+                             
+                               
+                                itemCount_adet_4++;
+
+                                document.getElementById('indexNmb_4').innerHTML = itemCount_adet_4.toString();   
+                                
+
+                            
+
+                                let totalEnd =new Intl.NumberFormat('en-US');    
+                                                 
+                                total_4 = total_4 + fiyat_4[0];                               
+
+                                totalEnd = totalEnd.format(total_4);
+                                str4_fiyat = totalEnd;
+                                document.getElementById('fiyat_4').innerHTML = str4_fiyat.toString()+' ₺';
+                                console.log(str4_fiyat);
+                            }); 
+
+                            document.getElementById("myBtn2_4").addEventListener("click", function() {
+                                total2_4=total_4;
+                                itemCount_adet_4--;
+                                let totalEnd2 =new Intl.NumberFormat('en-US');   
+                                total2_4 = total2_4 - 10299;
+
+                                totalEnd2 = totalEnd2.format(total2_4);
+                                document.getElementById('fiyat_4').innerHTML = totalEnd2.toString()+' ₺';
+
+                               
+                                document.getElementById('indexNmb_4').innerHTML = itemCount_adet_4.toString();
+
+                                total_4=total2_4;
+                                str4_fiyat = total2_4;
+                                console.log(str4_fiyat);
+                                
+                                if(itemCount_adet_4==0){
+                                    tr.remove(document.getElementById('#tr_4'));
+                                    controlNumber4=0;
+                                }
+                             
+                            });  
+                           
+
+                    }else if(i==3){                            
+                            var prg = document.createElement('p');                       
+                            prg.id='fiyat_4';
+                            var note = document.createTextNode('10.299 ₺');   
+                            prg.appendChild(note);                            
+                            td.appendChild(prg); 
+                            str4_fiyat = 10299;
+                            document.getElementById('fiyat_4').innerHTML = document.getElementById('card4_fiyat').innerHTML;
+                            
+
+                    }
+
+                   
+                
+                     tr.appendChild(td);
+                     controlNumber4++;
+                     
+                    }
+                    
+
+                 
+            }
+            
+        }
+        
+        
+        
+         //  mehmet dursun ince modern web nasıl çalışır
+               // port sweaker
+        
+        
+        
+        
+        
+      
+        
+        
+        function shpCart(){
+                    
+                    document.getElementById("cartContainer").style.visibility = "visible";
+                    document.getElementById('table').style.visibility = 'visible';
+                    document.getElementById('hesaplamaBtn').style.visibility = 'visible';
+                
+                }
+              
+                function faturFnk(){
+                    var fatura =str1_fiyat+str2_fiyat+str3_fiyat+str4_fiyat ;
+                    document.getElementById('checkAccount').style.visibility = 'visible';
+
+                    let totalHesap =new Intl.NumberFormat('en-US');
+                    totalHesap = totalHesap.format(fatura);
+
+                    document.getElementById('hesap').innerHTML = totalHesap.toString()+' ₺';
+                    console.log(fatura);
+                }
+         </script>
+
+    
+</body>
+</html>
